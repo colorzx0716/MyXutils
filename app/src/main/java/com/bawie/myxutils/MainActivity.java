@@ -1,83 +1,148 @@
 package com.bawie.myxutils;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.ImageView;
 
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.ViewInject;
-import org.xutils.x;
+import com.bawie.myxutils.bean.ScrollBean;
+import com.bawie.myxutils.fragment.Fragment1;
+import com.bawie.myxutils.fragment.Fragment2;
+import com.bawie.myxutils.fragment.LeftFragment;
+import com.bawie.myxutils.fragment.RightFragment;
+import com.bawie.myxutils.view.HorizontalScollTabhost;
+import com.kson.slidingmenu.SlidingMenu;
+import com.kson.slidingmenu.app.SlidingFragmentActivity;
 
-@ContentView(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity {
-    @ViewInject(R.id.tv_xiao)
-    TextView tv_xiao;
+import java.util.ArrayList;
+import java.util.List;
 
-    //解析地址
-    private String url = "http://v.juhe.cn/toutiao/index?type=&key=22a108244dbb8d1f49967cd74a0c144d";
+public class MainActivity extends SlidingFragmentActivity implements View.OnClickListener {
+
+
+    private HorizontalScollTabhost mytabhost;
+
+    private List<Fragment> fragmentList;
+    private List<ScrollBean> beanList;
+    private ImageView user,shezhi;
+    private SlidingMenu menu;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_main);
-        x.view().inject(this);
+      setContentView(R.layout.activity_main);
 
-        RequestParams params = new RequestParams(url);
-        //post请求
-        params.addBodyParameter("username","abc");
-        params.addParameter("password","123");
-        x.http().post(params, new Callback.CommonCallback<String>() {
+        mytabhost = (HorizontalScollTabhost) findViewById(R.id.tabhost);
 
-            @Override
-            public void onSuccess(String result) {
-                //请求的结果
-                System.out.println("result = " + result);
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-
-        /*
-         Get请求
-         params.addQueryStringParameter("username","abc");
-         params.addQueryStringParameter("password","123");
-
-         x.http().get(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                //解析result
-                System.out.println("结果在这里" + result);
-            }
-            //请求异常后的回调方法
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-            }
-            //主动调用取消请求的回调方法
-            @Override
-            public void onCancelled(CancelledException cex) {
-            }
-            @Override
-            public void onFinished() {
-            }
-        });
-*/
-
+        initView();
+        initData();//滑动头部
+        initMenu();//左右侧拉
 
     }
 
+    //寻找控件
+    private void initView() {
+
+        user = (ImageView) findViewById(R.id.tou_iv_user);
+        shezhi = (ImageView) findViewById(R.id.tou_iv_shezhi);
+
+        //图片点击事件
+        user.setOnClickListener(this);
+        shezhi.setOnClickListener(this);
+    }
+
+
+    /**
+     * 滑动头部
+     */
+    private void initData() {
+
+        fragmentList = new ArrayList<>();
+        beanList = new ArrayList<>();
+
+      ScrollBean sb = new ScrollBean();
+        sb.id = "top";
+        sb.username = "头条";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "娱乐";
+        sb.id = "yule";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "社会";
+        sb.id = "shehui";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "体育";
+        sb.id = "tiyu";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "科技";
+        sb.id = "keji";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "财经";
+        sb.id = "caijing";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "时尚";
+        sb.id = "shishang";
+        beanList.add(sb);
+
+        sb = new ScrollBean();
+        sb.username = "军事";
+        sb.id = "junshi";
+        beanList.add(sb);
+
+        fragmentList.add(new Fragment1());
+        fragmentList.add(new Fragment2());
+        fragmentList.add(new Fragment2());
+        fragmentList.add(new Fragment2());
+        fragmentList.add(new Fragment2());
+        fragmentList.add(new Fragment2());
+        fragmentList.add(new Fragment2());
+        fragmentList.add(new Fragment2());
+
+        mytabhost.diaplay(beanList,fragmentList);
+    }
+
+    /**
+     * 左右侧拉
+     */
+    private void initMenu() {
+
+        //添加菜单
+        setBehindContentView(R.layout.left_menu);
+        getSupportFragmentManager().beginTransaction().replace(R.id.left_menu,new LeftFragment()).commit();
+
+        //设置slidingmenu相关属性
+        menu = getSlidingMenu();
+        menu.setMode(SlidingMenu.LEFT_RIGHT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+        menu.setBehindOffsetRes(R.dimen.BehindOffsetRes);  // 设置滑动菜单视图的宽度
+
+        //设置右菜单
+        menu.setSecondaryMenu(R.layout.right_menu);
+        getSupportFragmentManager().beginTransaction().replace(R.id.right_menu,new RightFragment()).commit();
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tou_iv_user:
+                menu.showMenu();
+                break;
+            case R.id.tou_iv_shezhi:
+                menu.showSecondaryMenu();
+                break;
+        }
+
+    }
 }

@@ -1,7 +1,10 @@
 package com.bawie.myxutils;
 
 import android.app.Application;
+import android.content.Context;
 
+import com.bawie.myxutils.bean.Constants;
+import com.mob.MobSDK;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -14,10 +17,17 @@ import org.xutils.x;
  */
 
 public class MyApp extends Application {
+    public static Context mContext;
+
+
     @Override
     public void onCreate() {
         super.onCreate();
         initIMG();
+
+        mContext = this;
+        MobSDK.init(this, Constants.KEY, Constants.SECRET);
+
         x.Ext.init(this);
         x.Ext.setDebug(false);//输出debug日志，开启会影响性能
 

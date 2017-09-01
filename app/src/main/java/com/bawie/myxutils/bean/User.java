@@ -5,4 +5,11 @@ package com.bawie.myxutils.bean;
  */
 
 public class User {
+    public String uid;
+    public String phone;
+    public String name;
+    public String age;
+    public String sex;
+    public String icon;
+
 }

@@ -1,7 +1,9 @@
 package com.bawie.myxutils;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,12 +14,11 @@ import com.bawie.myxutils.fragment.LeftFragment;
 import com.bawie.myxutils.fragment.RightFragment;
 import com.bawie.myxutils.view.HorizontalScollTabhost;
 import com.kson.slidingmenu.SlidingMenu;
-import com.kson.slidingmenu.app.SlidingFragmentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends SlidingFragmentActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private HorizontalScollTabhost mytabhost;
@@ -31,7 +32,9 @@ public class MainActivity extends SlidingFragmentActivity implements View.OnClic
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
-
+        //静态广播发送
+        sendBroadcast(new Intent("kson.test"));
+        //头部横条
         mytabhost = (HorizontalScollTabhost) findViewById(R.id.tabhost);
 
         initView();
@@ -118,11 +121,11 @@ public class MainActivity extends SlidingFragmentActivity implements View.OnClic
     private void initMenu() {
 
         //添加菜单
-        setBehindContentView(R.layout.left_menu);
+        menu = new SlidingMenu(this);
+        menu.setMenu(R.layout.left_menu);
         getSupportFragmentManager().beginTransaction().replace(R.id.left_menu,new LeftFragment()).commit();
 
         //设置slidingmenu相关属性
-        menu = getSlidingMenu();
         menu.setMode(SlidingMenu.LEFT_RIGHT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
         menu.setBehindOffsetRes(R.dimen.BehindOffsetRes);  // 设置滑动菜单视图的宽度
@@ -131,6 +134,7 @@ public class MainActivity extends SlidingFragmentActivity implements View.OnClic
         menu.setSecondaryMenu(R.layout.right_menu);
         getSupportFragmentManager().beginTransaction().replace(R.id.right_menu,new RightFragment()).commit();
 
+        menu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT);
     }
 
     @Override

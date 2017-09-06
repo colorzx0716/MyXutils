@@ -17,10 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
-repositories{
-    flatDir{
+repositories {
+    flatDir {
         dirs 'libs' //就是你放aar的目录地址
     }
 }
@@ -32,15 +37,12 @@ dependencies {
     })
     compile project(':xlistviewimg')
     compile project(':slidingmenu')
+    compile name: 'SMSSDK-3.0.0', ext: 'aar'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.xutils:xutils:3.5.0'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     testCompile 'junit:junit:4.12'
-
-    compile name:'SMSSDK-3.0.0',ext:'aar'
-
-
-
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
 }

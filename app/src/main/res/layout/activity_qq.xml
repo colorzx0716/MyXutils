@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.bawie.myxutils.QQActivity">
+    <TextView
+        android:id="@+id/username"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tv_name"/>
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:id="@+id/iv_user"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/qq"
+        android:text="name"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="qqClick"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="qq授权登录"/>
+
+</LinearLayout>

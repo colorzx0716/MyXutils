@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">MyXutils</string>
-    <string name="chang_content">夜间模式</string>
+    <string name="chang_content">日间模式</string>
 </resources>

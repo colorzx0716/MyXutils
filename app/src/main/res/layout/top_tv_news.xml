@@ -6,7 +6,7 @@
     android:padding="15dp"
     android:text="头条"
     android:background="#20999999"
-    android:textColor="@drawable/tab_color"
+    android:textColor="@color/main_textView"
     android:textSize="18sp"
     >
 

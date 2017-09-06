@@ -98,6 +98,7 @@
 
             <TextView
                 android:id="@+id/tv_shoucang"
+                android:textColor="@color/main_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="收藏" />
@@ -120,6 +121,7 @@
                 android:id="@+id/tv_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/main_textView"
                 android:text="历史" />
         </LinearLayout>
         <LinearLayout
@@ -139,6 +141,7 @@
                 android:id="@+id/tv_night"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/main_textView"
                 android:text="夜间" />
         </LinearLayout>
 </LinearLayout>
@@ -164,7 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我的关注"
-                android:textColor="#5B5B5B"
+                android:textColor="@color/main_textView"
                 android:textSize="25sp" />
 
             <ImageView
@@ -210,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="消息通知"
-                android:textColor="#5B5B5B"
+                android:textColor="@color/main_textView"
                 android:textSize="25sp" />
         </LinearLayout>
     </LinearLayout>
@@ -236,7 +239,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="头条商城"
-                android:textColor="#5B5B5B"
+                android:textColor="@color/main_textView"
                 android:textSize="25sp" />
 
 
@@ -248,7 +251,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_toLeftOf="@+id/iv_btn1"
                 android:text="邀请好友得200元现金奖励"
-                android:textColor="#5B5B5B" />
+                android:textColor="@color/main_textView" />
 
             <ImageView
                 android:id="@+id/iv_btn1"
@@ -279,7 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="京东特供"
-                    android:textColor="#5B5B5B"
+                    android:textColor="@color/main_textView"
                     android:textSize="25sp" />
 
 
@@ -322,6 +325,7 @@
                     android:gravity="center_vertical"
                     android:id="@+id/tv_woyaobaoliao"
                     android:text="我要爆料"
+                    android:textColor="@color/main_textView"
                     android:textSize="25sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -340,6 +344,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:textColor="@color/main_textView"
                     android:text="用户反馈"
                     android:textSize="25sp" />
             </RelativeLayout>
@@ -357,6 +362,7 @@
                 <TextView
                     android:gravity="center_vertical"
                     android:id="@+id/tv_xitongshezhi"
+                    android:textColor="@color/main_textView"
                     android:text="系统设置"
                     android:textSize="25sp"
                     android:layout_width="wrap_content"
@@ -364,9 +370,5 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
-
-
-
 
     </LinearLayout>

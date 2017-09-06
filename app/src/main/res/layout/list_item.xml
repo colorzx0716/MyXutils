@@ -15,6 +15,7 @@
         android:orientation="vertical"
         android:layout_height="200dp">
         <TextView
+            android:textColor="@color/main_textView"
             android:id="@+id/list_title"
             android:text="标题"
             android:gravity="center"
@@ -28,6 +29,7 @@
             android:gravity="bottom"
             >
             <TextView
+                android:textColor="@color/main_textView"
                 android:id="@+id/list_address"
                 android:text="标题"
                 android:layout_width="0dp"
@@ -35,6 +37,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="@color/main_textView"
                 android:id="@+id/list_date"
                 android:text="标题"
                 android:layout_width="0dp"

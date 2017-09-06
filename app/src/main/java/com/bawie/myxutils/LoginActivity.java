@@ -157,4 +157,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void chahao(View view){
         finish();//返回
     }
+
+
 }

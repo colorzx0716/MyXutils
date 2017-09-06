@@ -3,6 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="main_textView">#000000</color>
+
+    <color name="bg_selected_color">#ff0000</color>
+    <color name="white">#ffffff</color>
+    <color name="common_bg">#ffffff</color>
+    <color name="common_tvcolor_dark">#333333</color>
 
     <color name="baise">#ffffff</color>
     <color name="heise">#000000</color>

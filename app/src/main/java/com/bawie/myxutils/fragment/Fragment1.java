@@ -1,14 +1,17 @@
 package com.bawie.myxutils.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.bawie.myxutils.Bean;
 import com.bawie.myxutils.R;
+import com.bawie.myxutils.XiangQingActivity;
 import com.bawie.myxutils.adapter.MyListAdapter;
 import com.google.gson.Gson;
 
@@ -52,6 +55,18 @@ public class Fragment1 extends Fragment implements XListView.IXListViewListener 
         f1_xlv.setXListViewListener(this);
         f1_xlv.setPullLoadEnable(true);
         f1_xlv.setPullRefreshEnable(true);
+
+        //点击条目跳转到其他页面
+        f1_xlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+                intent.putExtra("url",data.get(i-1).getUrl());
+                startActivity(intent);
+
+            }
+        });
         initPost();
     }
 

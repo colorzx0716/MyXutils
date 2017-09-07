@@ -180,4 +180,8 @@ public class HorizontalScollTabhost extends LinearLayout implements ViewPager.On
         }
 
     }
+
+    public void remove(){
+        myMenuLayout.removeAllViews();
+    }
 }
